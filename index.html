@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator - Calcii </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <form>
+                <input  class="dis" type="text" name="display">
+
+                <input type="button" class="num col" id="clear" value="C">
+                <input type="button" class="num col" value="/">
+                <input type="button" class="num col" value="*">
+                <input type="button" class="num" value="7">
+                <input type="button" class="num" value="8">
+                <input type="button" class="num" value="9">
+                <input type="button" class="num col" value="-">
+                <input type="button" class="num" value="4">
+                <input type="button" class="num" value="5">
+                <input type="button" class="num" value="6">
+                <input type="button" class="num col" id="add" value="+">
+                <input type="button" class="num" value="1">
+                <input type="button" class="num" value="2">
+                <input type="button" class="num" value="3">
+                <input type="button" class="num" value="0">
+                <input type="button" class="num" value="00">
+                <input type="button" class="num" value=".">
+                <input type="button" class="num col" value="=">
+        </form>
+    </div> 
+
+    <script>
+        let str = "";
+
+        let button = document.querySelectorAll('.num');
+
+        Array.from(button).forEach( (but)=> {
+            but.addEventListener('click', (e)=> {
+
+                if(e.target.value == '=') {
+                    try {
+                    str= eval(str);
+                    } 
+                    catch (error)  {
+                        str = 'Error';
+                    }
+                }
+                else if (e.target.value == 'C') {
+                    str = '';
+                }
+                else {
+                str= str + e.target.value;
+                }
+                document.querySelector('.dis').value =str;
+                
+            })
+        })
+    </script>
+</body>
+</html>
